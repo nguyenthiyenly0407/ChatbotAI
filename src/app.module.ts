@@ -4,7 +4,7 @@ import { ChatbotService } from './chatbot/chatbot.service';
 import { HttpModule } from '@nestjs/axios';
 import axios from 'axios'
 @Module({
-  imports: [HttpModule],  // Cần thêm HttpModule
+  imports: [HttpModule],  
   controllers: [ChatbotController],
   providers: [ChatbotService],
 })

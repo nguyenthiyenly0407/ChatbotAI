@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Param, ParseIntPipe } from '@nestjs/common';
 import { ChatbotService } from './chatbot.service';
 
 // Định nghĩa DTO cho câu hỏi
@@ -13,5 +13,11 @@ export class ChatbotController {
   @Post()
   async getAnswer(@Body() data: QuestionRequest) {
     return this.chatbotService.askQuestion(data.question);
+  }
+  @Get(':id')
+  async getAnswerById(
+  @Param('id', ParseIntPipe) id: number,
+  ): Promise<{ answer: string }> {
+    return this.chatbotService.getAnswerById(id);
   }
 }

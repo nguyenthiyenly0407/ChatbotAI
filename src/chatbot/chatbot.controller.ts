@@ -4,6 +4,7 @@ import { ChatbotService } from './chatbot.service';
 // Định nghĩa DTO cho câu hỏi
 class QuestionRequest {
   question: string;
+  
 }
 
 @Controller('chat')
@@ -14,10 +15,16 @@ export class ChatbotController {
   async getAnswer(@Body() data: QuestionRequest) {
     return this.chatbotService.askQuestion(data.question);
   }
+  
   @Get(':id')
   async getAnswerById(
   @Param('id', ParseIntPipe) id: number,
   ): Promise<{ answer: string }> {
     return this.chatbotService.getAnswerById(id);
   }
+  @Get()
+  async getAll() {
+    return this.chatbotService.findAll();
+  }
 }
+

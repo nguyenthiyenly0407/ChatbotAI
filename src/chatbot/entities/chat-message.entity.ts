@@ -4,6 +4,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeor
 @Entity()
 export class ChatMessage {
   @PrimaryGeneratedColumn()
+  
   id: number;
 
   @Column()
